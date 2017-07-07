@@ -13,6 +13,9 @@ var connector = new builder.ChatConnector({
     appPassword: '02aYSbsvEiJLTMqmfi2FjpO'
 });
 
+var regex = /.*Dan.*/;
+var regex2 = /.*dan.*/;
+
 // Listen for messages from users
 
 server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.listen());
@@ -20,11 +23,10 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
 // Receive messages from the user and respond by echoing each message back (prefixed with 'You said:')
 var bot = new builder.UniversalBot(connector, function (session) {
 
-    if(
-        session.message.text.match('/^.*Daniel.*$')
-        || session.message.text.match('/^.*daniel.*$')
-        || session.message.text.match('/^.*Dan.*$')
-        || session.message.text.match('/^.*dan.*$'))
+    var mensaje = session.message.text;
+
+    if
+    (mensaje.match(regex)||mensaje.match(regex2))
     {
         session.send("Erazo mariconazo");
     }
