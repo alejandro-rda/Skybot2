@@ -20,10 +20,11 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
 // Receive messages from the user and respond by echoing each message back (prefixed with 'You said:')
 var bot = new builder.UniversalBot(connector, function (session) {
 
-    if(session.message.text === 'Daniel'
-        || session.message.text === 'daniel'
-        || session.message.text === 'Dan'
-        || session.message.text === 'dan')
+    if(
+        session.message.text.match('/^.*Daniel.*$')
+        || session.message.text.match('/^.*daniel.*$')
+        || session.message.text.match('/^.*Dan.*$')
+        || session.message.text.match('/^.*dan.*$'))
     {
         session.send("Erazo mariconazo");
     }
