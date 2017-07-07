@@ -13,8 +13,6 @@ var connector = new builder.ChatConnector({
     appPassword: '02aYSbsvEiJLTMqmfi2FjpO'
 });
 
-server.get('/api/messages', console.log('It Works'));
-
 // Listen for messages from users
 server.post('/api/messages', connector.listen());
 
