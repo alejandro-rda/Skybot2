@@ -9,8 +9,8 @@ server.listen(process.env.port || process.env.PORT || 8080, function () {
 
 // Create chat connector for communicating with the Bot Framework Service
 var connector = new builder.ChatConnector({
-    appId: '82ff654b-3087-4b37-beef-2bd10868c0b7',
-    appPassword: '02aYSbsvEiJLTMqmfi2FjpO'
+    appId: process.env.APP_ID,
+    appPassword: process.env.APP_PASSWORD
 });
 
 /*
@@ -66,7 +66,7 @@ bot.on('conversationUpdate', function (message) {
             .text('El siguiente miembro ' + membersRemoved + ' se ha quitado :('));
 
         membersRemoved.map(function (m) {
-            if(m.id === 'dan.erazog'){
+            if(m.id === 'luiso_xd'){
                 bot.send(new builder.Message()
                     .address(message.address)
                     .text('Dan se ha salido, alguien agreguelo porfa :S'));
