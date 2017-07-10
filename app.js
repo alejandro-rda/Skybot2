@@ -71,7 +71,7 @@ bot.on('conversationUpdate', function (message) {
             .text('El siguiente miembro ' + membersRemoved + ' se ha quitado :('));
 
         membersRemoved.map(function (m) {
-            if(m.id === 'derazog'){
+            if(m.id === "29:1WQ6aolBgg8k5pFCtNV3dk__auzje3gG56OGWnL9ro-g"){
                 bot.send(new builder.Message()
                     .address(message.address)
                     .text('Dan se ha salido, alguien agreguelo porfa :S'));
