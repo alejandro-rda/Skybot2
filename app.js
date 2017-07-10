@@ -58,10 +58,8 @@ bot.on('conversationUpdate', function (message) {
     }
 
     if (message.membersRemoved && message.membersRemoved.length > 0) {
-        var memberRemoved = null;
         var membersRemoved = message.membersRemoved
             .map(function (m) {
-                memberRemoved = m.name;
                 var isSelf = m.id === message.address.bot.id;
                 return (isSelf ? message.address.bot.name : m.name) || '' + ' (Id: ' + m.id + ')';
             })
@@ -70,7 +68,7 @@ bot.on('conversationUpdate', function (message) {
 
         bot.send(new builder.Message()
             .address(message.address)
-            .text('El siguiente miembro ' + memberRemoved + ' se ha quitado :('));
+            .text('El siguiente miembro ' + membersRemoved + ' se ha quitado :('));
 
         membersRemoved.map(function (m) {
             if(m.id === 'luiso_xd'){
