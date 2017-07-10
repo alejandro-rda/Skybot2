@@ -61,7 +61,7 @@ bot.on('conversationUpdate', function (message) {
         var membersRemoved = message.membersRemoved
             .map(function (m) {
                 var isSelf = m.id === message.address.bot.id;
-                return (isSelf ? message.address.bot.name : m.name) || '' + ' (Nombre: ' + m.name + ')';
+                return (isSelf ? message.address.bot.name : m.name) || '' + ' (Id: ' + m.id + ')';
             })
             .join(', ');
 
