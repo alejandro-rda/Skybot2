@@ -48,7 +48,7 @@ bot.on('conversationUpdate', function (message) {
         var membersAdded = message.membersAdded
             .map(function (m) {
                 var isSelf = m.id === message.address.bot.id;
-                return (isSelf ? message.address.bot.name : m.name) || '' + ' (Id: ' + m.name + ')';
+                return (isSelf ? message.address.bot.name : m.name) || '' + ' (Nombre: ' + m.name + ')';
             })
             .join(', ');
 
@@ -61,7 +61,7 @@ bot.on('conversationUpdate', function (message) {
         var membersRemoved = message.membersRemoved
             .map(function (m) {
                 var isSelf = m.id === message.address.bot.id;
-                return (isSelf ? message.address.bot.name : m.name) || '' + ' (Id: ' + m.id + ')';
+                return (isSelf ? message.address.bot.name : m.name) || '' + ' (Nombre: ' + m.name + ')';
             })
             .join(', ');
 
