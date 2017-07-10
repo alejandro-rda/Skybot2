@@ -48,7 +48,7 @@ bot.on('conversationUpdate', function (message) {
         var membersAdded = message.membersAdded
             .map(function (m) {
                 var isSelf = m.id === message.address.bot.id;
-                return (isSelf ? message.address.bot.name : m.name) || '' + ' (Nombre: ' + m.name + ')';
+                return (isSelf ? message.address.bot.name : m.name) || '' + ' (Id: ' + m.id + ')';
             })
             .join(', ');
 
@@ -71,7 +71,7 @@ bot.on('conversationUpdate', function (message) {
             .text('El siguiente miembro ' + membersRemoved + ' se ha quitado :('));
 
         membersRemoved.map(function (m) {
-            if(m.id === 'luiso_xd'){
+            if(m.id === 'derazog'){
                 bot.send(new builder.Message()
                     .address(message.address)
                     .text('Dan se ha salido, alguien agreguelo porfa :S'));
