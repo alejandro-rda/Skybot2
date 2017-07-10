@@ -35,7 +35,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
      (mensaje.match(regex3)||mensaje.match(regex4)||mensaje.match(regex5)||mensaje.match(regex6)) {
         session.send("Lo siento no puedo molestar a mi creador.");
     }else{
-        session.send(mensaje.split('@').pop() + " mariconazo");
+        session.send(mensaje.split('@').reverse().pop() + " mariconazo");
     }
 });
 
