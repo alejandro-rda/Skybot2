@@ -39,7 +39,7 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
         session.send("Lo siento no puedo molestar a mi creador.");
     }
     else if(mensajeVal.match(regexAlianza)||mensajeVal.match(regexAlianzaLima)){
-        session.send("SE VIENE EL QUINO!!!." + 	"(party)(party)(party)");
+        session.send("SE VIENE EL QUINO!!!" + 	"(party)(party)(party)");
     }else{
         if(mensajeVal.includes('@')){
             session.send(mensaje.split('@').reverse().pop() + "mariconazo");
