@@ -20,10 +20,8 @@ var regex2 = /.*dan.*!/;
 
 var regex = /.*LOCO.*/;
 var regex2 = /.*ALEJANDRO.*/;
-
 var regexAlianza = /.*ALIANZA.*/;
 var regexAlianzaLima = /.*ALIANZA LIMA.*/;
-
 
 // Listen for messages from users
 server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.listen());
@@ -50,6 +48,9 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
 });
 
 bot.on('conversationUpdate', function (message) {
+
+    var danSalio = false;
+
     if (message.membersAdded && message.membersAdded.length > 0) {
         var membersAdded = message.membersAdded
             .map(function (m) {
@@ -66,22 +67,23 @@ bot.on('conversationUpdate', function (message) {
     if (message.membersRemoved && message.membersRemoved.length > 0) {
         var membersRemoved = message.membersRemoved
             .map(function (m) {
+                if(m.id === "29:1WQ6aolBgg8k5pFCtNV3dk__auzje3gG56OGWnL9ro-g"){
+                    danSalio = true;
+                }
                 var isSelf = m.id === message.address.bot.id;
                 return (isSelf ? message.address.bot.name : m.name) || '' + ' (Id: ' + m.id + ')';
             })
             .join(', ');
 
-
         bot.send(new builder.Message()
             .address(message.address)
             .text('El siguiente miembro ' + membersRemoved + ' se ha quitado :('));
 
-        membersRemoved.map(function (m) {
-            if(m.id === "29:1WQ6aolBgg8k5pFCtNV3dk__auzje3gG56OGWnL9ro-g"){
-                bot.send(new builder.Message()
-                    .address(message.address)
-                    .text('Dan se ha salido, alguien agreguelo porfa :S'));
-            }
-        });
+        if(danSalio){
+            bot.send(new builder.Message()
+                .address(message.address)
+                .text('Dan se ha salido, alguien agreguelo porfa :S'));
+        }
+
     }
 });
