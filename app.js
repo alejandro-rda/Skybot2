@@ -18,24 +18,30 @@ var regex = /.*Dan.*!/;
 var regex2 = /.*dan.*!/;
 */
 
-var regex3 = /.*Loco.*/;
-var regex4 = /.*loco.*/;
-var regex5 = /.*Alejandro.*/;
-var regex6 = /.*alejandro.*/;
+var regex = /.*LOCO.*/;
+var regex2 = /.*ALEJANDRO.*/;
+
+var regexAlianza = /.*ALIANZA.*/;
+var regexAlianzaLima = /.*ALIANZA LIMA.*/;
+
 
 // Listen for messages from users
 server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.listen());
 
 // Receive messages from the user
-var bot = new builder.UniversalBot(connector, function (session) {
+    var bot = new builder.UniversalBot(connector, function (session) {
 
     var mensaje = session.message.text;
+    var mensajeVal = session.message.text.toUpperCase();
 
     if
-     (mensaje.match(regex3)||mensaje.match(regex4)||mensaje.match(regex5)||mensaje.match(regex6)) {
+     (mensajeVal.match(regex)||mensajeVal.match(regex2)) {
         session.send("Lo siento no puedo molestar a mi creador.");
+    }
+    else if(mensajeVal.match(regexAlianza)||mensajeVal.match(regexAlianzaLima)){
+        session.send("SE VIENE EL QUINO!!!." + 	"(party)(party)(party)");
     }else{
-        if(mensaje.includes('@')){
+        if(mensajeVal.includes('@')){
             session.send(mensaje.split('@').reverse().pop() + "mariconazo");
         }else{
             session.send(mensaje + " mariconazo");
