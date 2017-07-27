@@ -22,6 +22,7 @@ var regex = /.*LOCO.*/;
 var regex2 = /.*ALEJANDRO.*/;
 var regexAlianza = /.*ALIANZA.*/;
 var regexAlianzaLima = /.*ALIANZA LIMA.*/;
+var regexPeru = /.*PERU.*/;
 
 // Listen for messages from users
 server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.listen());
@@ -33,6 +34,9 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
     var mensajeVal = session.message.text.toUpperCase();
 
     if
+    (mensajeVal.match(regexPeru))   {
+        session.send("FELICES FIESTAS PATRIAS, LES DESEA SU AMIGO FAKERAZO (flag:PE)(flag:PE)(flag:PE)");
+    }else if
      (mensajeVal.match(regex)||mensajeVal.match(regex2)) {
         session.send("Lo siento no puedo molestar a mi creador.");
     }
