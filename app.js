@@ -35,7 +35,7 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
 
     if
     (mensajeVal.match(regexPeru))   {
-        session.send("FELICES FIESTAS PATRIAS, LES DESEA SU AMIGO FAKERAZO (flag:PE)(flag:PE)(flag:PE)");
+        session.send("FELICES FIESTAS PATRIAS, LES DESEA SU AMIGO FAKERAZO (flag:PE) (flag:PE) (flag:PE)");
     }else if
      (mensajeVal.match(regex)||mensajeVal.match(regex2)) {
         session.send("Lo siento no puedo molestar a mi creador.");
