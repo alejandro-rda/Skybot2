@@ -37,9 +37,9 @@ exports.devolvermensaje = function (mensaje, mensajeM, mapa) {
 
         if (mensajeM.match(regex)) {
             return value;
-        } else {
-            return "No entiendo lo que dices :P";
         }
-    })
+    });
 
-}
+    return "No entiendo lo que dices :P";
+
+};
