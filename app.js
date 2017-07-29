@@ -1,7 +1,13 @@
-var restify = require('restify');
-var builder = require('botbuilder');
+const restify = require('restify');
+const builder = require('botbuilder');
+const HashMap = require('hashmap');
+const pg = require('pg');
 
-// Setup Restify Server
+/*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
+var mapaRespuestas = new HashMap;
+inicializarMapa(mapaRespuestas);
+/*FIN CACHE*/
+
 var server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 8080, function () {
     console.log('%s listening to %s', server.name, server.url);
@@ -13,42 +19,24 @@ var connector = new builder.ChatConnector({
     appPassword: process.env.APP_PASSWORD
 });
 
-/*
-var regex = /.*Dan.*!/;
-var regex2 = /.*dan.*!/;
-*/
-
-var regex = /.*LOCO.*/;
-var regex2 = /.*ALEJANDRO.*/;
-var regexAlianza = /.*ALIANZA.*/;
-var regexAlianzaLima = /.*ALIANZA LIMA.*/;
-var regexPeru = /.*PERU.*/;
 
 // Listen for messages from users
 server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.listen());
 
 // Receive messages from the user
     var bot = new builder.UniversalBot(connector, function (session) {
-
     var mensaje = session.message.text;
     var mensajeVal = session.message.text.toUpperCase();
 
-    if
-    (mensajeVal.match(regexPeru))   {
-        session.send("FELICES FIESTAS PATRIAS, LES DESEA SU AMIGO FAKERAZO (flag:PE) (flag:PE) (flag:PE)");
-    }else if
-     (mensajeVal.match(regex)||mensajeVal.match(regex2)) {
-        session.send("Lo siento no puedo molestar a mi creador.");
-    }
-    else if(mensajeVal.match(regexAlianza)||mensajeVal.match(regexAlianzaLima)){
-        session.send("SE VIENE EL QUINO!!!" + 	"(party)(party)(party)");
-    }else{
-        if(mensajeVal.includes('@')){
+    var rpta = devolvermensaje(mensaje,mensajeVal, mapaRespuestas);
+    session.send(rpta);
+
+        /*if(mensajeVal.includes('@')){
             session.send(mensaje.split('@').reverse().pop() + "mariconazo");
         }else{
             session.send(mensaje + " mariconazo");
-        }
-    }
+        }*/
+
 });
 
 bot.on('conversationUpdate', function (message) {

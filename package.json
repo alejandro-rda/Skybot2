@@ -9,6 +9,7 @@
   "dependencies": {
     "botbuilder": "^3.7.0",
     "restify": "^5.0.0",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "hashmap": "^2.1.0"
   }
 }

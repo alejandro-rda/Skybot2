@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="d2rpfrn4r1r3nv@ec2-54-225-68-71.compute-1.amazonaws.com">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.2">
+    <root id="1"/>
+    <database id="2" parent="1" name="d2rpfrn4r1r3nv">
+      <ObjectId>14330723</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <schema id="3" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2017-07-29.00:05:29.020</IntrospectionTimestamp>
+      <IntrospectionStateNumber>22729929</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="4" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="5" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="6" parent="2" name="pg_temp_1">
+      <ObjectId>11848</ObjectId>
+    </schema>
+    <schema id="7" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11849</ObjectId>
+    </schema>
+    <schema id="8" parent="2" name="information_schema">
+      <ObjectId>13003</ObjectId>
+    </schema>
+    <sequence id="9" parent="3" name="message_id_seq">
+      <ObjectId>14331576</ObjectId>
+      <StateNumber>22729928</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <table id="10" parent="3" name="message">
+      <ObjectId>14331578</ObjectId>
+      <StateNumber>22729928</StateNumber>
+    </table>
+    <column id="11" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>22729928</StateNumber>
+      <SequenceName>message_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;message_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="12" parent="10" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <StateNumber>22729928</StateNumber>
+    </column>
+    <column id="13" parent="10" name="value">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+      <StateNumber>22729928</StateNumber>
+    </column>
+    <index id="14" parent="10" name="message_id_uindex">
+      <ObjectId>14331584</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="15" parent="10" name="message_pkey">
+      <ObjectId>14331582</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="16" parent="10" name="message_pkey">
+      <ObjectId>14331583</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>message_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
