@@ -34,10 +34,10 @@ exports.recuperarMensajes = function () {
     const results = [];
     client.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
-           return err.toJSON();
+           return err;
             client.end()
         } else {
-            return res.rows.toJSON();
+            return res.rows;
             client.end();
         }
     });
