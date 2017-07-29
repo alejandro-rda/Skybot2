@@ -6,10 +6,10 @@ const {Client} = require('pg');
 const {await} = require('await');
 const connectionString = process.env.DATABASE_URL;
 const client = new Client({
-    connectionString: connectionString,
+    connectionString: connectionString
 });
 
-exports.inicializarMapa = async function (mapa) {
+exports.inicializarMapa = function (mapa) {
     await client.connect();
     let respuesta = "";
     const results = [];
@@ -30,7 +30,7 @@ exports.inicializarMapa = async function (mapa) {
     return mapa;
 };
 
-exports.recuperarMensajes = async function () {
+exports.recuperarMensajes = function () {
     await client.connect();
     let respuesta = "";
     const results = [];
