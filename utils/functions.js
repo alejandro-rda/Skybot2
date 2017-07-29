@@ -3,17 +3,17 @@
  */
 
 const {Client} = require('pg');
-const {await} = require('await');
 const connectionString = process.env.DATABASE_URL;
 const client = new Client({
     connectionString: connectionString
 });
+client.connect();
+
 
 exports.inicializarMapa =  function (mapa) {
-    await client.connect();
     let respuesta = "";
     const results = [];
-    await client.query('SELECT name, value FROM message;', (err, res) => {
+    client.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
             console.log(err.stack);
         } else {
@@ -21,7 +21,7 @@ exports.inicializarMapa =  function (mapa) {
         }
     });
 
-    await client.end();
+    client.end();
 
     for (let item in respuesta) {
         mapa.set(item[name], item[value]);
@@ -31,10 +31,10 @@ exports.inicializarMapa =  function (mapa) {
 };
 
 exports.recuperarMensajes = function () {
-    await client.connect();
+    client.connect();
     let respuesta = "";
     const results = [];
-    await client.query('SELECT name, value FROM message;', (err, res) => {
+    client.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
             respuesta = err;
         } else {
@@ -43,10 +43,9 @@ exports.recuperarMensajes = function () {
 
     });
 
-    await client.end();
+    client.end();
     return respuesta;
 };
-
 exports.devolvermensaje = function (mensaje, mensajeM, mapa) {
 
     mapa.forEach(function (key, value) {

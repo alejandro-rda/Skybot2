@@ -19,8 +19,9 @@ let connector = new builder.ChatConnector({
     appPassword: process.env.APP_PASSWORD
 });
 
-server.get('https://skybot-danielazo.herokuapp.com/api/messages', function () {
-    return funciones.recuperarMensajes();
+server.get('https://skybot-danielazo.herokuapp.com/api/messages', function respuesta (req, res, next) {
+    res.send(funciones.recuperarMensajes());
+    next();
 });
 
 // Listen for messages from users
