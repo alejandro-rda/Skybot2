@@ -2,48 +2,46 @@
  * Created by rualejan on 28/07/2017.
  */
 
-const pg = require('pg');
-const client = new pg.Client;
-const conString = process.env.DATABASE_URL;
+const {Client} = require('pg');
+const connectionString = process.env.DATABASE_URL;
+const client = new Client({
+    connectionString: connectionString,
+});
+client.connect();
 
-
-exports.inicializarMapa = function(mapa){
+exports.inicializarMapa = function (mapa) {
     let respuesta = "";
-    client.connect(conString, function (err, client, done) {
-        if (err) {
-            return next(err)
-        }
-        client.query('SELECT name, value FROM message;', [], function (err, result) {
-            done();
-
-            if (err) {
-                return next(err)
-            }
-
-            respuesta.json(result.rows);
-            client.end();
-        })
+    const results = [];
+    const query = client.query('SELECT name, value FROM message;');
+    // Stream results back one row at a time
+    query.on('row', (row) => {
+        results.push(row);
+    });
+    // After all data is returned, close connection and return results
+    query.on('end', () => {
+        done();
+        respuesta.json(results);
+        client.end();
     });
 
-    for(let item in respuesta){
+    for (let item in respuesta) {
         mapa.set(item[name], item[value]);
     }
 
     return mapa;
 };
 
-
-exports.devolvermensaje = function(mensaje,mensajeM, mapa) {
+exports.devolvermensaje = function (mensaje, mensajeM, mapa) {
 
     mapa.forEach(function (key, value) {
 
-        let regex = new RegExp(key,"i");
+        let regex = new RegExp(key, "i");
 
-        if(mensajeM.match(regex)){
+        if (mensajeM.match(regex)) {
             return value;
-        }else{
+        } else {
             return "No entiendo lo que dices :P";
         }
     })
-    
+
 }
