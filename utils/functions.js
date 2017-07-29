@@ -26,7 +26,6 @@ exports.inicializarMapa =  function (mapa) {
     for (let item in respuesta) {
         mapa.set(item[name], item[value]);
     }
-
     return mapa;
 };
 
@@ -46,6 +45,7 @@ exports.recuperarMensajes = function () {
     client.end();
     return respuesta;
 };
+
 exports.devolvermensaje = function (mensaje, mensajeM, mapa) {
 
     mapa.forEach(function (key, value) {
@@ -56,7 +56,5 @@ exports.devolvermensaje = function (mensaje, mensajeM, mapa) {
             return value;
         }
     });
-
     return "No entiendo lo que dices :P";
-
 };
