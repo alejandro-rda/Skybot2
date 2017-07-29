@@ -14,19 +14,21 @@ exports.inicializarMapa = function (mapa) {
     const results = [];
     client.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
-            console.log(err.stack);
-            client.end()
-        } else {
-            console.log(res.rows);
+            respuesta =  err.stack;
             client.end();
+            return respuesta;
+        } else {
+            respuesta = res.rows;
+            client.end();
+            return respuesta;
         }
     });
 
-    for (let item in respuesta) {
+/*    for (let item in respuesta) {
         mapa.set(item[name], item[value]);
     }
 
-    return mapa;
+    return mapa;*/
 };
 
 exports.devolvermensaje = function (mensaje, mensajeM, mapa) {
