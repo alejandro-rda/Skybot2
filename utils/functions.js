@@ -34,7 +34,7 @@ exports.recuperarMensajes = function () {
         connectionString: connectionString
     });
     client2.connect();
-    let respuesta = "";
+    let respuesta = [];
     client2.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
             respuesta = err;
