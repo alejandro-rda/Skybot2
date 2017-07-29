@@ -3,8 +3,8 @@
  */
 const conString = process.env.DATABASE_URL;
 
-function inicializarMapa(mapa){
-    var respuesta = "";
+exports.inicializarMapa = function(mapa){
+    let respuesta = "";
 
     pg.connect(conString, function (err, client, done) {
         if (err) {
@@ -21,19 +21,19 @@ function inicializarMapa(mapa){
         })
     });
 
-    for(var item in respuesta){
+    for(let item in respuesta){
         mapa.set(item[name], item[value]);
     }
 
     return mapa;
-}
+};
 
 
 function devolvermensaje(mensaje,mensajeM, mapa) {
 
     mapa.forEach(function (key, value) {
 
-        var regex = new RegExp(key,"i");
+        let regex = new RegExp(key,"i");
 
         if(mensajeM.match(regex)){
             return value;
