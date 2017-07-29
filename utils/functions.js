@@ -7,6 +7,8 @@ const connectionString = process.env.DATABASE_URL;
 const client = new Client({
     connectionString: connectionString
 });
+client.connect();
+
 
 
 exports.inicializarMapa =  function (mapa) {
@@ -30,18 +32,18 @@ exports.inicializarMapa =  function (mapa) {
 
 exports.recuperarMensajes = function () {
     let respuesta = "";
-    const results = [];
-    client.connect();
     client.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
             respuesta = err;
+            client.end();
         } else {
+            console.log(res.rows);
             respuesta = JSON.stringify(res.rows);
+            client.end();
         }
 
     });
 
-    client.end();
     return respuesta;
 };
 
