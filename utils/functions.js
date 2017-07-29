@@ -21,7 +21,7 @@ exports.inicializarMapa = function(mapa){
             }
 
             respuesta.json(result.rows);
-            pg.end();
+            client.end();
         })
     });
 
