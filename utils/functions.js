@@ -44,6 +44,7 @@ exports.recuperarMensajes = function () {
     });
 
     client.end();
+    console.log(respuesta);
     return respuesta;
 };
 exports.devolvermensaje = function (mensaje, mensajeM, mapa) {
