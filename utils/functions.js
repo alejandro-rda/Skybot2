@@ -9,8 +9,6 @@ const client = new Client({
 });
 client.connect();
 
-
-
 exports.inicializarMapa =  function (mapa) {
     let respuesta = "";
     const results = [];
@@ -37,7 +35,7 @@ exports.recuperarMensajes = function () {
             respuesta = err;
             client.end();
         } else {
-            console.log(res.rows);
+            console.log("R1: " + res.rows[0]);
             respuesta = JSON.stringify(res.rows);
             client.end();
         }
