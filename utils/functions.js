@@ -31,7 +31,6 @@ exports.inicializarMapa =  function (mapa) {
 };
 
 exports.recuperarMensajes = function () {
-    client.connect();
     let respuesta = "";
     const results = [];
     client.query('SELECT name, value FROM message;', (err, res) => {
