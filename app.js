@@ -21,7 +21,7 @@ let connector = new builder.ChatConnector({
 
 //Probando el End-Point
 server.get('https://skybot-danielazo.herokuapp.com/api/messages', function () {
-    return funciones.devolvermensaje(null,null, null);
+    return funciones.inicializarMapa(null);
 });
 
 
