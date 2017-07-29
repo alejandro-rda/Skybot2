@@ -9,8 +9,8 @@ const client = new Client({
     connectionString: connectionString,
 });
 
-exports.inicializarMapa = async function recuperarMapa (mapa) {
-
+exports.inicializarMapa = async function (mapa) {
+    await client.connect();
     let respuesta = "";
     const results = [];
     await client.query('SELECT name, value FROM message;', (err, res) => {
@@ -30,7 +30,7 @@ exports.inicializarMapa = async function recuperarMapa (mapa) {
     return mapa;
 };
 
-exports.recuperarMensajes = async function recuperMensaje () {
+exports.recuperarMensajes = async function () {
     await client.connect();
     let respuesta = "";
     const results = [];
