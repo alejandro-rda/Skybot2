@@ -19,12 +19,9 @@ let connector = new builder.ChatConnector({
     appPassword: process.env.APP_PASSWORD
 });
 
-//Probando el End-Point
 server.get('https://skybot-danielazo.herokuapp.com/api/messages', function () {
-    return funciones.inicializarMapa(null).toJSON();
+    return funciones.recuperarMensajes();
 });
-
-
 
 // Listen for messages from users
 server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.listen());
@@ -44,8 +41,6 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
         }*/
 
 });
-
-
 
 bot.on('conversationUpdate', function (message) {
 

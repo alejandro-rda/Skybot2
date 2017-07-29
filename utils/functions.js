@@ -14,21 +14,35 @@ exports.inicializarMapa = function (mapa) {
     const results = [];
     client.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
-            respuesta =  err.stack;
-            client.end();
-            return respuesta;
+            console.log(err.stack);
+            client.end()
         } else {
-            respuesta = res.rows;
+            console.log(res.rows);
             client.end();
-            return respuesta;
         }
     });
 
-/*    for (let item in respuesta) {
+    for (let item in respuesta) {
         mapa.set(item[name], item[value]);
     }
 
-    return mapa;*/
+    return mapa;
+};
+
+exports.recuperarMensajes = function () {
+    let respuesta = "";
+    const results = [];
+    client.query('SELECT name, value FROM message;', (err, res) => {
+        if (err) {
+           return err.stack.toJSON();
+            client.end()
+        } else {
+            return res.rows.toJSON();
+            client.end();
+        }
+    });
+
+    return "Funciona";
 };
 
 exports.devolvermensaje = function (mensaje, mensajeM, mapa) {
