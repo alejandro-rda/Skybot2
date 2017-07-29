@@ -5,8 +5,8 @@ const pg = require('pg');
 const funciones = require('./utils/functions.js');
 
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
-let mapaRespuestas = new HashMap;
-let ejecutarInicializacion = funciones.inicializarMapa(mapaRespuestas);
+let mapavacio = new HashMap;
+let mapacargado = funciones.inicializarMapa(mapavacio);
 /*FIN CACHE*/
 
 let server = restify.createServer();
@@ -29,8 +29,8 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
     let mensaje = session.message.text;
     let mensajeVal = session.message.text.toUpperCase();
 
-        let rpta = devolvermensaje(mensaje,mensajeVal, mapaRespuestas);
-    session.send(rpta);
+        let rpta = funciones.devolvermensaje(mensaje,mensajeVal, mapacargado);
+        session.send(rpta);
 
         /*if(mensajeVal.includes('@')){
             session.send(mensaje.split('@').reverse().pop() + "mariconazo");

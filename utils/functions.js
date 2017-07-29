@@ -29,7 +29,7 @@ exports.inicializarMapa = function(mapa){
 };
 
 
-function devolvermensaje(mensaje,mensajeM, mapa) {
+exports.devolvermensaje = function(mensaje,mensajeM, mapa) {
 
     mapa.forEach(function (key, value) {
 
