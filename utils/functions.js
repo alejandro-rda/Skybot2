@@ -34,7 +34,7 @@ exports.recuperarMensajes = function () {
     const results = [];
     client.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
-           return err.stack.toJSON();
+           return err.toJSON();
             client.end()
         } else {
             return res.rows.toJSON();
