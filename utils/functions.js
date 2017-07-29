@@ -17,8 +17,7 @@ exports.inicializarMapa = function (mapa) {
             console.log(err.stack);
             client.end()
         } else {
-            results.push(res.rows[0]);
-            respuesta.json(results);
+            console.log(res.rows[0]);
             client.end();
         }
     });
