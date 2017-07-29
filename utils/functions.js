@@ -2,7 +2,6 @@
  * Created by rualejan on 28/07/2017.
  */
 
-import {rows} from "pg";
 const {Client} = require('pg');
 const connectionString = process.env.DATABASE_URL;
 const client = new Client({
@@ -38,7 +37,7 @@ exports.recuperarMensajes = function () {
             client.end();
             return err;
         } else {
-            respuesta = res.json(rows);
+            respuesta = JSON.stringify(res.rows);
             client.end();
             return res;
         }
