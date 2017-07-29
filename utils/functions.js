@@ -2,12 +2,11 @@
  * Created by rualejan on 28/07/2017.
  */
 const conexion = require('pg');
-pg = new conexion();
 const conString = process.env.DATABASE_URL;
 
 exports.inicializarMapa = function(mapa){
     let respuesta = "";
-    pg.connect(conString, function (err, client, done) {
+    conexion.connect(conString, function (err, client, done) {
         if (err) {
             return next(err)
         }
