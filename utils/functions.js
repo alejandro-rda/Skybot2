@@ -38,6 +38,7 @@ exports.recuperarMensajes = function () {
             respuesta = err;
         } else {
             respuesta = JSON.stringify(res.rows);
+            console.log(res.rows);
         }
 
     });
