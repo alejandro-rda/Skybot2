@@ -3,6 +3,8 @@ const builder = require('botbuilder');
 const HashMap = require('hashmap');
 const funciones = require('./utils/functions.js');
 
+
+
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
 let mapavacio = new HashMap;
 let mapacargado = funciones.inicializarMapa(mapavacio);
