@@ -9,7 +9,7 @@ const client = new Client({
     connectionString: connectionString
 });
 
-exports.inicializarMapa = function (mapa) {
+exports.inicializarMapa =  function (mapa) {
     await client.connect();
     let respuesta = "";
     const results = [];
