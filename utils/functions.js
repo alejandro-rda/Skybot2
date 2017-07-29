@@ -4,11 +4,11 @@
 
 const {Client} = require('pg');
 const connectionString = process.env.DATABASE_URL;
-const client = new Client({
-    connectionString: connectionString
-});
 
 exports.inicializarMapa =  function (mapa) {
+    const client = new Client({
+        connectionString: connectionString
+    });
     client.connect();
     let respuesta = "";
     const results = [];
@@ -30,16 +30,18 @@ exports.inicializarMapa =  function (mapa) {
 };
 
 exports.recuperarMensajes = function () {
-    client.connect();
+    const client2 = new Client({
+        connectionString: connectionString
+    });
+    client2.connect();
     let respuesta = "";
-    client.query('SELECT name, value FROM message;', (err, res) => {
+    client2.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
             respuesta = err;
-            client.end();
+            client2.end();
         } else {
-            console.log("R1: " + res.rows[0]);
             respuesta = JSON.stringify(res.rows);
-            client.end();
+            client2.end();
         }
 
     });
