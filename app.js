@@ -1,7 +1,6 @@
 const restify = require('restify');
 const builder = require('botbuilder');
 const HashMap = require('hashmap');
-const pg = require('pg');
 const funciones = require('./utils/functions.js');
 
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/

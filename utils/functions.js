@@ -1,6 +1,7 @@
 /**
  * Created by rualejan on 28/07/2017.
  */
+const pg = require('pg');
 const conString = process.env.DATABASE_URL;
 
 exports.inicializarMapa = function(mapa){
