@@ -15,12 +15,13 @@ exports.inicializarMapa =  function (mapa) {
     client.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
             console.log(err.stack);
+            client.end();
         } else {
             console.log(res.rows);
+            client.end();
         }
     });
 
-    client.end();
 
     for (let item in respuesta) {
         mapa.set(item[name], item[value]);
