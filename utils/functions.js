@@ -40,7 +40,7 @@ exports.recuperarMensajes = function () {
             respuesta = err;
             client2.end();
         } else {
-            respuesta.push[res.rows[0]];
+            respuesta.push(res.rows[0]);
             client2.end();
         }
 
