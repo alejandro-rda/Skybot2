@@ -20,7 +20,7 @@ exports.getMessages =  function () {
             client.end();
         }
 
-        console.log(mensajes);
+        console.log("FUNCION: " + mensajes);
         return mensajes;
 
     });

@@ -22,7 +22,7 @@ let connector = new builder.ChatConnector({
 
 server.get('https://skybot-danielazo.herokuapp.com/api/messages', function respuesta (req, res, next) {
     let mensajes = funciones.getMessages();
-    console.log("P: " + mensajes);
+    console.log("PARAMETRIA: " + mensajes);
     res.send(mensajes);
     next();
 });
