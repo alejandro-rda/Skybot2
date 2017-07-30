@@ -7,7 +7,6 @@ const connectionString = process.env.DATABASE_URL;
 
 
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
-let mensajes = "";
 let mapavacio = new HashMap;
 /*FIN CACHE*/
 
@@ -23,6 +22,7 @@ let connector = new builder.ChatConnector({
 });
 
 server.get('https://skybot-danielazo.herokuapp.com/api/messages', function respuesta (req, res, next) {
+    let mensajes = "";
     const client = new Client({connectionString: connectionString});
     client.connect();
     client.query('SELECT name, value FROM message;', (err, res) => {
