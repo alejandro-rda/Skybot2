@@ -6,6 +6,7 @@ const {Client} = require('pg');
 const connectionString = process.env.DATABASE_URL;
 
 exports.getMessages =  function () {
+    let mensajes = "";
     const client = new Client({
         connectionString: connectionString
     });
@@ -22,27 +23,6 @@ exports.getMessages =  function () {
         console.log(mensajes);
         return mensajes;
 
-    });
-
-};
-
-exports.recuperarMensajes = function () {
-    let respuesta = [];
-    const client2 = new Client({
-        connectionString: connectionString
-    });
-    client2.connect();
-    client2.query('SELECT name, value FROM message;', (err, res) => {
-        if (err) {
-            respuesta = err;
-            client2.end();
-        } else {
-            respuesta.push(res.rows[0]);
-            client2.end();
-        }
-
-        console.log("R: " + JSON.stringify(respuesta));
-        return JSON.stringify(respuesta);
     });
 
 };
