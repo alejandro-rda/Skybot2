@@ -4,8 +4,9 @@ const HashMap = require('hashmap');
 const funciones = require('./utils/functions.js');
 
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
+let mensajes = "";
 let mapavacio = new HashMap;
-let mapacargado = funciones.inicializarMapa(mapavacio);
+let allMessages = funciones.getMessages(mensajes);
 /*FIN CACHE*/
 
 let server = restify.createServer();
@@ -20,9 +21,8 @@ let connector = new builder.ChatConnector({
 });
 
 server.get('https://skybot-danielazo.herokuapp.com/api/messages', function respuesta (req, res, next) {
-    let msg = funciones.recuperarMensajes();
-    console.log("D: " + msg);
-    res.send(msg);
+    console.log("D: " + allMessages);
+    res.send(allMessages);
     next();
 });
 
