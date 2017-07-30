@@ -44,7 +44,7 @@ exports.recuperarMensajes = function () {
             client2.end();
         }
 
-        console.log("R: " + respuesta[0]);
+        console.log("R: " + JSON.stringify(respuesta));
         return respuesta;
     });
 
