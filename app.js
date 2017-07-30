@@ -8,14 +8,15 @@ let mensajes = function () {
     const simpleClient = new Client({connectionString: connectionString});
     simpleClient.connect();
     simpleClient.query('SELECT name, value FROM message;', (err, res) => {
+        let respuesta;
         if (err) {
-            mensajes = err.stack;
+            respuesta = err.stack;
             simpleClient.end();
-            return mensajes();
+            return respuesta;
         } else {
-            mensajes = res.rows;
+            respuesta = res.rows;
             simpleClient.end();
-            return mensajes;
+            return respuesta;
         }
     });
 };
