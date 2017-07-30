@@ -11,7 +11,7 @@ exports.getMessages =  function () {
         connectionString: connectionString
     });
     client.connect();
-    client.query('SELECT name, value FROM message;', (err, res) => {
+    mensajes = client.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
             mensajes = JSON.stringify(err.stack);
             client.end();
@@ -21,11 +21,12 @@ exports.getMessages =  function () {
         }
 
         console.log("FUNCION: " + mensajes);
-        return mensajes;
 
     });
 
     console.log("FUNCION V2: " + mensajes);
+    return mensajes;
+
 
 };
 
