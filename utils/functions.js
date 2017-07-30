@@ -14,10 +14,10 @@ exports.inicializarMapa =  function (mapa) {
     const results = [];
     client.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
-            console.log(err.stack);
+            //console.log(err.stack);
             client.end();
         } else {
-            console.log(res.rows);
+            //console.log(res.rows);
             client.end();
         }
     });
@@ -29,24 +29,26 @@ exports.inicializarMapa =  function (mapa) {
     return mapa;
 };
 
+let respuesta = [];
+
 exports.recuperarMensajes = function () {
     const client2 = new Client({
         connectionString: connectionString
     });
     client2.connect();
-    let respuesta = [];
     client2.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
             respuesta = err;
             client2.end();
         } else {
+            console.log("OK");
             respuesta.push(res.rows[0]);
             client2.end();
         }
 
     });
 
-    console.log("JSON" + respuesta);
+    console.log("mensaje: " + respuesta);
 
     return respuesta;
 };
