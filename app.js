@@ -17,10 +17,13 @@ function mensajes() {
         } else {
             respuesta = res.rows;
             simpleClient.end();
+            console.log(respuesta);
             return respuesta;
         }
     });
 }
+
+mensajes();
 
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
 let mapavacio = new HashMap;
