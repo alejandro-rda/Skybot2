@@ -8,7 +8,7 @@ const connectionString = process.env.DATABASE_URL;
 function mensajes() {
     const simpleClient = new Client({connectionString: connectionString});
     simpleClient.connect();
-    simpleClient.query('SELECT name, value FROM message;', (err, res) => {
+    return simpleClient.query('SELECT name, value FROM message;', (err, res) => {
         let respuesta;
         if (err) {
             respuesta = err.stack;
