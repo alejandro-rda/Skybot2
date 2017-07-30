@@ -12,15 +12,15 @@ exports.getMessages =  function (mensajes) {
     client.connect();
     client.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
-            mensajes = err.stack;
+            mensajes = JSON.stringify(err.stack);
             client.end();
         } else {
-            mensajes = res.rows;
+            mensajes = JSON.stringify(res.rows);
             client.end();
         }
 
-        console.log(JSON.stringify(mensajes));
-        return JSON.stringify(mensajes);
+        console.log(mensajes);
+        return mensajes;
 
     });
 
