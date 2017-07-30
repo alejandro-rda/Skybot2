@@ -29,12 +29,12 @@ server.get('https://skybot-danielazo.herokuapp.com/api/messages', function respu
         if (err) {
             mensajes = JSON.stringify(err.stack);
             client.end();
-            response.send(mensajes);
+            response.send(res.rows);
             next();
         } else {
             mensajes = JSON.stringify(res.rows);
             client.end();
-            response.send(mensajes);
+            response.send(res.rows);
             next();
         }
     });
