@@ -9,7 +9,7 @@ function mensajes() {
     const simpleClient = new Client({connectionString: connectionString});
     simpleClient.connect();
     return simpleClient.query('SELECT name, value FROM message;', (err, res) => {
-        let respuesta;
+        let respuesta = "";
         if (err) {
             respuesta = err.stack;
             simpleClient.end();
