@@ -4,7 +4,21 @@ const HashMap = require('hashmap');
 const funciones = require('./utils/functions.js');
 const {Client} = require('pg');
 const connectionString = process.env.DATABASE_URL;
-
+let mensajes = function () {
+    const simpleClient = new Client({connectionString: connectionString});
+    simpleClient.connect();
+    simpleClient.query('SELECT name, value FROM message;', (err, res) => {
+        if (err) {
+            mensajes = err.stack;
+            client.end();
+            return mensajes();
+        } else {
+            mensajes = res.rows;
+            client.end();
+            return mensajes;
+        }
+    });
+};
 
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
 let mapavacio = new HashMap;
@@ -21,24 +35,8 @@ let connector = new builder.ChatConnector({
     appPassword: process.env.APP_PASSWORD
 });
 
-server.get('https://skybot-danielazo.herokuapp.com/api/messages', function respuesta (req, response, next) {
-    let mensajes = "";
-    const client = new Client({connectionString: connectionString});
-    client.connect();
-    client.query('SELECT name, value FROM message;', (err, res) => {
-        if (err) {
-            mensajes = JSON.stringify(err.stack);
-            client.end();
-            response.send(res.rows);
-            next();
-        } else {
-            mensajes = JSON.stringify(res.rows);
-            client.end();
-            response.send(res.rows);
-            next();
-        }
-    });
-
+server.get('https://skybot-danielazo.herokuapp.com/api/messages', function (req, response, next) {
+    response.send(mensajes());
 });
 
 
