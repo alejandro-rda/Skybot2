@@ -37,8 +37,8 @@ let connector = new builder.ChatConnector({
 });
 
 server.get('https://skybot-danielazo.herokuapp.com/api/messages', function (req, response, next) {
-    console.log(mensajes());
-    response.send(mensajes());
+    console.log(mensajes);
+    response.send(mensajes);
 });
 
 
