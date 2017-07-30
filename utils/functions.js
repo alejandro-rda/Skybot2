@@ -30,7 +30,7 @@ exports.inicializarMapa =  function (mapa) {
 };
 
 exports.recuperarMensajes = function () {
-    let respuesta;
+    let respuesta = [];
     const client2 = new Client({
         connectionString: connectionString
     });
@@ -40,7 +40,7 @@ exports.recuperarMensajes = function () {
             respuesta = err;
             client2.end();
         } else {
-            respuesta = res.rows[0];
+            respuesta.push[res.rows[0]];
             client2.end();
         }
 
