@@ -42,6 +42,7 @@ exports.recuperarMensajes = function () {
             client2.end();
         } else {
             console.log("OK");
+            console.log(res.rows);
             respuesta.push(res.rows[0]);
             client2.end();
         }
