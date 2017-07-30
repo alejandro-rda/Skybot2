@@ -19,6 +19,7 @@ exports.getMessages =  function (mensajes) {
             client.end();
         }
 
+        console.log(JSON.stringify(mensajes));
         return JSON.stringify(mensajes);
 
     });
