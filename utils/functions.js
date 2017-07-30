@@ -45,7 +45,7 @@ exports.recuperarMensajes = function () {
         }
 
         console.log("R: " + JSON.stringify(respuesta));
-        return respuesta;
+        return JSON.stringify(respuesta);
     });
 
 };
