@@ -25,6 +25,8 @@ exports.getMessages =  function () {
 
     });
 
+    console.log("FUNCION V2: " + mensajes);
+
 };
 
 exports.devolvermensaje = function (mensaje, mensajeM, mapa) {
