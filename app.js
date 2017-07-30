@@ -21,10 +21,13 @@ let connector = new builder.ChatConnector({
 });
 
 server.get('https://skybot-danielazo.herokuapp.com/api/messages', function respuesta (req, res, next) {
+    let mensajes = "A";
+    funciones.getMessages(mensajes);
     console.log("D: " + mensajes);
     res.send(mensajes);
     next();
 });
+
 
 // Listen for messages from users
 server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.listen());
