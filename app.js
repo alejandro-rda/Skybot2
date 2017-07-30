@@ -25,7 +25,7 @@ let connector = new builder.ChatConnector({
 server.get('https://skybot-danielazo.herokuapp.com/api/messages', function respuesta (req, res, next) {
     const client = new Client({connectionString: connectionString});
     client.connect();
-    mensajes = client.query('SELECT name, value FROM message;', (err, res) => {
+    client.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
             mensajes = JSON.stringify(err.stack);
             client.end();
@@ -33,9 +33,10 @@ server.get('https://skybot-danielazo.herokuapp.com/api/messages', function respu
             mensajes = JSON.stringify(res.rows);
             client.end();
         }
-        res.send(mensajes);
-        next();
     });
+
+    res.send(mensajes);
+    next();
 });
 
 
