@@ -5,7 +5,7 @@
 const {Client} = require('pg');
 const connectionString = process.env.DATABASE_URL;
 
-exports.getMessages =  function (mensajes) {
+exports.getMessages =  function () {
     const client = new Client({
         connectionString: connectionString
     });
