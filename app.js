@@ -10,11 +10,11 @@ let mensajes = function () {
     simpleClient.query('SELECT name, value FROM message;', (err, res) => {
         if (err) {
             mensajes = err.stack;
-            client.end();
+            simpleClient.end();
             return mensajes();
         } else {
             mensajes = res.rows;
-            client.end();
+            simpleClient.end();
             return mensajes;
         }
     });
@@ -36,6 +36,7 @@ let connector = new builder.ChatConnector({
 });
 
 server.get('https://skybot-danielazo.herokuapp.com/api/messages', function (req, response, next) {
+    console.log(mensajes());
     response.send(mensajes());
 });
 
