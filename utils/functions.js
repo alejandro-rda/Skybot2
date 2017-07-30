@@ -2,32 +2,9 @@
  * Created by rualejan on 28/07/2017.
  */
 
-const {Client} = require('pg');
-const connectionString = process.env.DATABASE_URL;
 
 exports.getMessages =  function () {
     let mensajes = "";
-    const client = new Client({
-        connectionString: connectionString
-    });
-    client.connect();
-    mensajes = client.query('SELECT name, value FROM message;', (err, res) => {
-        if (err) {
-            mensajes = JSON.stringify(err.stack);
-            client.end();
-        } else {
-            mensajes = JSON.stringify(res.rows);
-            client.end();
-        }
-
-        console.log("FUNCION: " + mensajes);
-
-    });
-
-    console.log("FUNCION V2: " + mensajes);
-    return mensajes;
-
-
 };
 
 exports.devolvermensaje = function (mensaje, mensajeM, mapa) {
