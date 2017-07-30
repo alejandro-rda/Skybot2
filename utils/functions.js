@@ -29,9 +29,8 @@ exports.inicializarMapa =  function (mapa) {
     return mapa;
 };
 
-let respuesta = [];
-
 exports.recuperarMensajes = function () {
+    let respuesta = [];
     const client2 = new Client({
         connectionString: connectionString
     });
@@ -41,17 +40,13 @@ exports.recuperarMensajes = function () {
             respuesta = err;
             client2.end();
         } else {
-            console.log(res.rows);
-            respuesta.push(res.rows[0]);
+            respuesta = res.rows;
             client2.end();
         }
 
-        console.log("mensaje: " + respuesta[0]);
-
+        return respuesta;
     });
 
-
-    return respuesta;
 };
 
 exports.devolvermensaje = function (mensaje, mensajeM, mapa) {
