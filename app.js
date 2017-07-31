@@ -5,11 +5,10 @@ const funciones = require('./utils/functions.js');
 const db = require('./db/dao.js');
 
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
-let memMessage;
-let getRespuestas = function () {
-    let returnlstMessage = db.devolverMensajes();
-    returnlstMessage.then(function (result) {
-        memMessage = result;
+let getRespuestas = () =>{
+    returnlstMessage = db.devolverMensajes();
+    return returnlstMessage.then(function (result) {
+        return result;
     });
 };
 
@@ -27,7 +26,7 @@ let connector = new builder.ChatConnector({
 });
 
 server.get('https://skybot-danielazo.herokuapp.com/api/messages', function (req, response) {
-    console.log(memMessage);
+    console.log(getRespuestas);
 
     let returnlstMessage = db.devolverMensajes();
     returnlstMessage.then(function (result) {
