@@ -9,6 +9,8 @@ exports.devolverMensajes = () => {
     const simpleClient = new Client({connectionString: connectionString});
     simpleClient.connect();
     return simpleClient.query('SELECT name, value FROM message;')
-        .then(res => {return res.rows})
+        .then(res => {
+            simpleClient.end();
+            return res.rows})
         .catch(e => console.error(e.stack));
 };

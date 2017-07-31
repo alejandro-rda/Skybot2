@@ -2,11 +2,6 @@
  * Created by rualejan on 28/07/2017.
  */
 
-
-exports.getMessages =  function () {
-    let mensajes = "";
-};
-
 exports.devolvermensaje = function (mensaje, mensajeM, mapa) {
 
     mapa.forEach(function (key, value) {
