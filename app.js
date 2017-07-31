@@ -3,15 +3,19 @@ const builder = require('botbuilder');
 const HashMap = require('hashmap');
 const funciones = require('./utils/functions.js');
 const db = require('./db/dao.js');
+const NodeCache = require( "node-cache" );
+const myCache = new NodeCache();
 
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
-function getRespuestas () {
-    return db.devolverMensajes()
-    .then(function (result) {
-        return result;
-    });
-}
-
+function inicializarCache(){
+    let lstMessage = db.devolverMensajes();
+     lstMessage.then(function (result) {
+     myCache.set( "lstMensajes", result, function( err, success ){
+             if( !err && success ){
+                 console.log( success );
+             }
+     });
+});
 /*FIN CACHE*/
 
 let server = restify.createServer();
@@ -26,13 +30,11 @@ let connector = new builder.ChatConnector({
 });
 
 server.get('https://skybot-danielazo.herokuapp.com/api/messages', function (req, response) {
-    console.log(getRespuestas());
-    response.send(getRespuestas());
 
-    /*let lstMessage = db.devolverMensajes();
+    let lstMessage = db.devolverMensajes();
     lstMessage.then(function (result) {
         response.send(result);
-    });*/
+    });
 });
 
 
