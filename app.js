@@ -7,15 +7,16 @@ const NodeCache = require( "node-cache" );
 const myCache = new NodeCache();
 
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
-function inicializarCache(){
+function inicializarCache() {
     let lstMessage = db.devolverMensajes();
-     lstMessage.then(function (result) {
-     myCache.set( "lstMensajes", result, function( err, success ){
-             if( !err && success ){
-                 console.log( success );
-             }
-     });
-});
+    lstMessage.then(function (result) {
+        myCache.set("lstMensajes", result, function (err, success) {
+            if (!err && success) {
+                console.log(success);
+            }
+        });
+    });
+}
 /*FIN CACHE*/
 
 let server = restify.createServer();
