@@ -5,12 +5,12 @@ const funciones = require('./utils/functions.js');
 const db = require('./db/dao.js');
 
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
-let getRespuestas = () =>{
+function getRespuestas () {
     return db.devolverMensajes()
     .then(function (result) {
         return result;
     });
-};
+}
 
 /*FIN CACHE*/
 
