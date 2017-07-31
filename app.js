@@ -2,17 +2,7 @@ const restify = require('restify');
 const builder = require('botbuilder');
 const HashMap = require('hashmap');
 const funciones = require('./utils/functions.js');
-const {Client} = require('pg');
-const connectionString = process.env.DATABASE_URL;
-
-let devolverMensajes = () => {
-    const simpleClient = new Client({connectionString: connectionString});
-    simpleClient.connect();
-    return simpleClient.query('SELECT name, value FROM message;')
-            .then(res => {return res.rows})
-            .catch(e => console.error(e.stack));
-    };
-
+const db = require('./db/dao.js');
 
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
 let mapavacio = new HashMap;
@@ -29,8 +19,8 @@ let connector = new builder.ChatConnector({
     appPassword: process.env.APP_PASSWORD
 });
 
-server.get('https://skybot-danielazo.herokuapp.com/api/messages', function (req, response, next) {
-    let returnMessage = devolverMensajes();
+server.get('https://skybot-danielazo.herokuapp.com/api/messages', function (req, response) {
+    let returnMessage = db.devolverMensajes();
     returnMessage.then(function (result) {
         response.send(result);
     });
