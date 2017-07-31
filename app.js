@@ -6,8 +6,8 @@ const db = require('./db/dao.js');
 
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
 let getRespuestas = () =>{
-    let lstMessage = db.devolverMensajes();
-    return lstMessage.then(function (result) {
+    return db.devolverMensajes()
+    .then(function (result) {
         return result;
     });
 };
