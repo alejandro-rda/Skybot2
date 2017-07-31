@@ -12,7 +12,7 @@ function inicializarCache() {
     lstMessage.then(function (result) {
         myCache.set("lstMensajes", result, function (err, success) {
             if (!err && success) {
-                console.log(success);
+                console.log('Cache Cargada');
             }
         });
     });
