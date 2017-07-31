@@ -1,6 +1,5 @@
 const restify = require('restify');
 const builder = require('botbuilder');
-const HashMap = require('hashmap');
 const funciones = require('./utils/functions.js');
 const db = require('./db/dao.js');
 const NodeCache = require( "node-cache" );
