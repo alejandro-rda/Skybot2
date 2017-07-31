@@ -36,9 +36,9 @@ server.get('https://skybot-danielazo.herokuapp.com/api/messages', function (req,
     let respuesta = myCache.get( "lstMensajes", function( err, value ){
         if( !err ){
             if(value === undefined){
-                console.log("Error al obtener la cache")
+                console.log("Error al obtener los mensajes de la cache")
             }else{
-                console.log("Se obtuvo la cache correctamente");
+                console.log("Se obtuvo los mensajes de la cache correctamente");
             }
         }
     });
