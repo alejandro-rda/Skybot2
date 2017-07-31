@@ -2,15 +2,16 @@
  * Created by rualejan on 28/07/2017.
  */
 
-exports.devolvermensaje = function (mensaje, mensajeM, mapa) {
+exports.devolvermensaje = function (mensaje, mensajeM, lstMensajes) {
 
-    mapa.forEach(function (key, value) {
+    for (let mensaje of lstMensajes) {
 
-        let regex = new RegExp(key, "i");
+        let regex = new RegExp(mensaje.name, "i");
 
         if (mensajeM.match(regex)) {
-            return value;
+            return mensaje.value;
         }
-    });
+    }
+
     return "No entiendo lo que dices :P";
 };
