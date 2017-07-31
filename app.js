@@ -54,15 +54,8 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
     let mensaje = session.message.text;
     let mensajeVal = session.message.text.toUpperCase();
     let listaMensajes = myCache.get( "lstMensajes" );
-
-        let rpta = funciones.devolvermensaje(mensaje,mensajeVal, listaMensajes);
-        session.send(rpta);
-
-        /*if(mensajeVal.includes('@')){
-            session.send(mensaje.split('@').reverse().pop() + "mariconazo");
-        }else{
-            session.send(mensaje + " mariconazo");
-        }*/
+    let rpta = funciones.devolvermensaje(mensaje,mensajeVal, listaMensajes);
+    session.send(rpta);
 
 });
 
