@@ -22,6 +22,7 @@ function inicializarCache() {
 let server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 8080, function () {
     console.log('%s listening to %s', server.name, server.url);
+    inicializarCache();
 });
 
 // Create chat connector for communicating with the Bot Framework Service
@@ -32,10 +33,17 @@ let connector = new builder.ChatConnector({
 
 server.get('https://skybot-danielazo.herokuapp.com/api/messages', function (req, response) {
 
-    let lstMessage = db.devolverMensajes();
-    lstMessage.then(function (result) {
-        response.send(result);
+    let respuesta = myCache.get( "lstMensajes", function( err, value ){
+        if( !err ){
+            if(value === undefined){
+                console.log("Error al obtener la cache")
+            }else{
+                console.log("Se obtuvo la cache correctamente");
+            }
+        }
     });
+
+    response.send(respuesta);
 });
 
 
