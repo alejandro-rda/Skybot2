@@ -27,11 +27,12 @@ let connector = new builder.ChatConnector({
 
 server.get('https://skybot-danielazo.herokuapp.com/api/messages', function (req, response) {
     console.log(getRespuestas());
+    response.send(getRespuestas());
 
-    let lstMessage = db.devolverMensajes();
+    /*let lstMessage = db.devolverMensajes();
     lstMessage.then(function (result) {
         response.send(result);
-    });
+    });*/
 });
 
 
