@@ -8,22 +8,11 @@ const connectionString = process.env.DATABASE_URL;
 function mensajes() {
     const simpleClient = new Client({connectionString: connectionString});
     simpleClient.connect();
-    return simpleClient.query('SELECT name, value FROM message;', (err, res) => {
-        let respuesta = "";
-        if (err) {
-            respuesta = err.stack;
-            simpleClient.end();
-            return respuesta;
-        } else {
-            respuesta = res.rows;
-            simpleClient.end();
-            console.log(respuesta);
-            return respuesta;
-        }
-    });
-}
+    return simpleClient.query('SELECT name, value FROM message;')
+            .then(res => res.rows)
+            .catch(e => console.error(e.stack));
+    }
 
-mensajes();
 
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
 let mapavacio = new HashMap;
