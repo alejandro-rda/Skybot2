@@ -5,13 +5,13 @@ const funciones = require('./utils/functions.js');
 const {Client} = require('pg');
 const connectionString = process.env.DATABASE_URL;
 
-function mensajes() {
+let devolverMensajes = () => {
     const simpleClient = new Client({connectionString: connectionString});
     simpleClient.connect();
     return simpleClient.query('SELECT name, value FROM message;')
-            .then(res => res.rows)
+            .then(res => {return res.rows})
             .catch(e => console.error(e.stack));
-    }
+    };
 
 
 /*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
@@ -30,8 +30,10 @@ let connector = new builder.ChatConnector({
 });
 
 server.get('https://skybot-danielazo.herokuapp.com/api/messages', function (req, response, next) {
-    console.log(mensajes());
-    response.send(mensajes());
+    let returnMessage = devolverMensajes();
+    returnMessage.then(function (result) {
+        response.send(result);
+    });
 });
 
 
