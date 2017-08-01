@@ -42,7 +42,6 @@ server.get('https://skybot-danielazo.herokuapp.com/api/messages', function (req,
         }
     });
 
-
     response.send(respuesta);
 });
 

@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-07-29.00:05:29.020</IntrospectionTimestamp>
-      <IntrospectionStateNumber>22729929</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-08-01.11:00:09.424</IntrospectionTimestamp>
+      <IntrospectionStateNumber>24060115</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -37,7 +37,7 @@
     </sequence>
     <table id="10" parent="3" name="message">
       <ObjectId>14331578</ObjectId>
-      <StateNumber>22729928</StateNumber>
+      <StateNumber>24044178</StateNumber>
     </table>
     <column id="11" parent="10" name="id">
       <Position>1</Position>
@@ -54,8 +54,8 @@
     </column>
     <column id="13" parent="10" name="value">
       <Position>3</Position>
-      <DataType>varchar(100)|0</DataType>
-      <StateNumber>22729928</StateNumber>
+      <DataType>varchar(10000)|0</DataType>
+      <StateNumber>24060115</StateNumber>
     </column>
     <index id="14" parent="10" name="message_id_uindex">
       <ObjectId>14331584</ObjectId>
