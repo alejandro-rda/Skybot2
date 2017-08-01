@@ -77,7 +77,6 @@ bot.on('conversationUpdate', function (message) {
             .text('Bienvenido ' + membersAdded + ' :)'));
     }
 
-
     if (message.membersRemoved && message.membersRemoved.length > 0) {
         let membersRemoved = message.membersRemoved
             .map(function (m) {
