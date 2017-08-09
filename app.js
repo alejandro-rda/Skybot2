@@ -5,7 +5,7 @@ const db = require('./db/dao.js');
 const NodeCache = require( "node-cache" );
 const myCache = new NodeCache();
 
-/*FIXME: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
+/*ARUIZ: MEJORAS AL CODIGO -> CACHE DE RESPUESTAS AL INICIALIZAR EL APP*/
 function inicializarCache() {
     let lstMessage = db.devolverMensajes();
     lstMessage.then(function (result) {
@@ -45,7 +45,6 @@ server.get('https://skybot-danielazo.herokuapp.com/api/messages', function (req,
 
     response.send(respuesta);
 });
-
 
 // Listen for messages from users
 server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.listen());
