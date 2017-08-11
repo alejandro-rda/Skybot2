@@ -59,6 +59,7 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
 
 });
 
+
 bot.on('conversationUpdate', function (message) {
 
     let danSalio = false;
