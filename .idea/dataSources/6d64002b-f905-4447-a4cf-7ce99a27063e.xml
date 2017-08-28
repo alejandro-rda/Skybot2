@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="d2rpfrn4r1r3nv@ec2-54-225-68-71.compute-1.amazonaws.com">
-  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.2">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.4">
     <root id="1"/>
     <database id="2" parent="1" name="d2rpfrn4r1r3nv">
       <ObjectId>14330723</ObjectId>
