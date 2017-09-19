@@ -88,15 +88,15 @@ bot.on('conversationUpdate', function (message) {
             })
             .join(', ');
 
-        bot.send(new builder.Message()
-            .address(message.address)
-            .text('El siguiente miembro ' + membersRemoved + ' se ha quitado :('));
-
         if(danSalio){
             bot.send(new builder.Message()
                 .address(message.address)
-                .text('Dan se ha salido, alguien agreguelo porfa :S'));
+                .text('Marica se ha salido, alguien agreguelo porfa :S'));
         }
+
+        bot.send(new builder.Message()
+            .address(message.address)
+            .text('El siguiente miembro ' + membersRemoved + ' se ha quitado :('));
 
     }
 });
