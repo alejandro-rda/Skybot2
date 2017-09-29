@@ -14,4 +14,5 @@ exports.devolverMensajes = () => {
             simpleClient.end();
             return res.rows})
         .catch(e => console.error(e.stack));
+
 };
