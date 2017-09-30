@@ -15,6 +15,7 @@ exports.devolvermensaje = function (mensaje, mensajeM, lstMensajes) {
         if (mensajeM.match(regex)) {
             return mensaje.value;
         }
+        
     }
 
     return "No entiendo lo que dices :P";
