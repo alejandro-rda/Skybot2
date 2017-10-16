@@ -56,6 +56,7 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
     let listaMensajes = myCache.get( "lstMensajes" );
     let rpta = funciones.devolvermensaje(mensaje,mensajeVal, listaMensajes);
     session.send(rpta);
+    session.send("Alejandro esta concentrado. No molestar :P")
 
 });
 
@@ -68,7 +69,7 @@ bot.on('conversationUpdate', function (message) {
         let membersAdded = message.membersAdded
             .map(function (m) {
                 let isSelf = m.id === message.address.bot.id;
-                return (isSelf ? message.address.bot.name : m.name) || '' + ' (Id: ' + m.id + ')';
+                return (isSelf ? message.address.bot.name : m.name) || '' + ' (Nombre: ' + m.name + ')';
             })
             .join(', ');
 
@@ -84,7 +85,7 @@ bot.on('conversationUpdate', function (message) {
                     danSalio = true;
                 }
                 let isSelf = m.id === message.address.bot.id;
-                return (isSelf ? message.address.bot.name : m.name) || '' + ' (Id: ' + m.id + ')';
+                return (isSelf ? message.address.bot.name : m.name) || '' + ' (Nombre: ' + m.name + ')';
             })
             .join(', ');
 
