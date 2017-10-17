@@ -56,7 +56,6 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
     let listaMensajes = myCache.get( "lstMensajes" );
     let rpta = funciones.devolvermensaje(mensaje,mensajeVal, listaMensajes);
     session.send(rpta);
-    session.send("Alejandro esta concentrado. No molestar :P")
 
 });
 
