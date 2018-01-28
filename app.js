@@ -55,14 +55,17 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
     let mensajeVal = session.message.text.toUpperCase();
     let listaMensajes = myCache.get( "lstMensajes" );
     let rpta = funciones.devolvermensaje(mensaje,mensajeVal, listaMensajes);
-    session.send(rpta);
-    let msg = new builder.Message(session)
-            .text("Aqui puedes enviar momazos:")
-            .attachments([{
-                contentType: "image/jpeg",
-                contentUrl: "http://www.theoldrobots.com/images62/Bender-18.JPG"
-            }]);
-    session.endDialog(msg);
+        if(mensajeVal.indexOf("MEME") > -1) {
+            let msg = new builder.Message(session)
+                .text("Toma un momazo!")
+                .attachments([{
+                    contentType: "image/jpeg",
+                    contentUrl: rpta
+                }]);
+            session.endDialog(msg);
+        }else{
+            session.send(rpta);
+        }
     });
 
 
