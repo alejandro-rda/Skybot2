@@ -56,7 +56,7 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
     let listaMensajes = myCache.get( "lstMensajes" );
     let rpta = funciones.devolvermensaje(mensaje,mensajeVal, listaMensajes);
         if(mensajeVal.indexOf("MEME") > -1) {
-            if(rpta !== null) {
+            if(rpta !== "" || rpta !== null) {
                 let msg = new builder.Message(session)
                     .text("Toma un momazo!")
                     .attachments([{
