@@ -56,8 +56,14 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
     let listaMensajes = myCache.get( "lstMensajes" );
     let rpta = funciones.devolvermensaje(mensaje,mensajeVal, listaMensajes);
     session.send(rpta);
-
-});
+    let msg = new builder.Message(session)
+            .text("Aqui puedes enviar momazos:")
+            .attachments([{
+                contentType: "image/jpeg",
+                contentUrl: "http://www.theoldrobots.com/images62/Bender-18.JPG"
+            }]);
+    session.endDialog(msg);
+    });
 
 
 bot.on('conversationUpdate', function (message) {
@@ -68,7 +74,7 @@ bot.on('conversationUpdate', function (message) {
         let membersAdded = message.membersAdded
             .map(function (m) {
                 let isSelf = m.id === message.address.bot.id;
-                return (isSelf ? message.address.bot.name : m.name) || '' + ' (Nombre: ' + m.name + ')';
+                return (isSelf ? message.address.bot.id : m.id) || '' + ' (Nombre: ' + m.id + ')';
             })
             .join(', ');
 
