@@ -17,5 +17,5 @@ exports.devolvermensaje = function (mensaje, mensajeM, lstMensajes) {
         }
     }
 
-    return "No entiendo lo que dices :P";
+    return "NO ENTIENDO";
 };
