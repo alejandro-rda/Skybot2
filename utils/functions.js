@@ -5,13 +5,13 @@
 exports.devolvermensaje = function (mensaje, mensajeM, lstMensajes) {
 
 
-    /*if(mensajeM.includes('@')) {
+    if(mensajeM.includes('@')) {
         mensajeM = mensaje.split('@').reverse().pop();
-    }*/
+    }
 
     for (let mensaje of lstMensajes) {
 
-        let regex = new RegExp(mensaje.name, "i");
+        let regex = new RegExp('@'+ mensaje.name, "i");
         if (mensajeM.match(regex)) {
             return mensaje.value;
         }
