@@ -56,7 +56,7 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
     let listaMensajes = myCache.get( "lstMensajes" );
     let rpta = funciones.devolvermensaje(mensaje,mensajeVal, listaMensajes);
         
-    if(mensajeVal === "GAA"){
+    if(mensajeVal.includes("GAA")){
          let msg = new builder.Message(session)
                     .text("GAAAAAAAAAAAAAAAAAAAAAAAAAAAA! DALE PLAY!!!")
                     .attachments([{
