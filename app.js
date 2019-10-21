@@ -66,7 +66,8 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
                     }]);
                 session.endDialog(msg);
     };
-        
+    
+        /*
         if(mensajeVal.indexOf("MEME") > -1) {
             if(rpta !== "NO ENTIENDO") {
                 let msg = new builder.Message(session)
@@ -82,8 +83,9 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
         }else{
             session.send(rpta);
         }
+        
+        */
     });
-
 
 bot.on('conversationUpdate', function (message) {
 
