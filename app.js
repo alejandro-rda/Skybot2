@@ -58,7 +58,7 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
         
     if(mensajeVal === "GAA"){
          let msg = new builder.Message(session)
-                    .text("GAAAAAAAAAAAAAAAAAAAAAAAAAAAA!")
+                    .text("GAAAAAAAAAAAAAAAAAAAAAAAAAAAA! DALE PLAY!!!")
                     .attachments([{
                         contentType: "video/mp4",
                         name: "oOyWRE50fjGr.mp4",
