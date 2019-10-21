@@ -55,6 +55,18 @@ server.post('https://skybot-danielazo.herokuapp.com/api/messages', connector.lis
     let mensajeVal = session.message.text.toUpperCase();
     let listaMensajes = myCache.get( "lstMensajes" );
     let rpta = funciones.devolvermensaje(mensaje,mensajeVal, listaMensajes);
+        
+    if(mensajeVal === "GAA"){
+         let msg = new builder.Message(session)
+                    .text("GAAAAAAAAAAAAAAAAAAAAAAAAAAAA!")
+                    .attachments([{
+                        contentType: "video/mp4",
+                        name: "oOyWRE50fjGr.mp4",
+                        contentUrl: "https://a.uguu.se/oOyWRE50fjGr.mp4"
+                    }]);
+                session.endDialog(msg);
+    };
+        
         if(mensajeVal.indexOf("MEME") > -1) {
             if(rpta !== "NO ENTIENDO") {
                 let msg = new builder.Message(session)
